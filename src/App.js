@@ -6,7 +6,7 @@ import Footer from './component/layout/Footer';
 import Join from './component/user/Join';
 import Login from './component/user/Login';
 import { Route, Routes } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>

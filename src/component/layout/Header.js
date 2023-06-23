@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import {AppBar, Toolbar, Grid,
-    Typography, Button} from "@mui/material";
+    Typography} from "@mui/material";
+
 import './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { isLogin, getLoginUserInfo } from '../../util/login-util';
+import { API_BASE_URL, USER } from '../../config/host-config';
 
 const Header = () => {
 
+    const profileRequestURL = `${API_BASE_URL}${USER}/load-s3`;
+
     const redirection = useNavigate();
 
-//   const [userInfo, setUserInfo] = useState(getLoginUserInfo());
+    // 프로필 이미지 url 상태변수
+    const [profileUrl, setProfileUrl] = useState(null);
 
-//   const { token, username, role } = userInfo;
+    // 로그인 상태를 나타내는 상태변수를 추가
+    const [isLoggedIn, setIsLoggedIn] = useState(isLogin());
 
     // 로그아웃 핸들러
     const logoutHandler = e => {
 
         localStorage.clear();
+        setProfileUrl(null);
         redirection('/login');
     };
 
@@ -31,9 +38,38 @@ const Header = () => {
        - 배열에 상태변수를 넣을 경우 상태값이 변경될때마다
          리렌더링함
     */
-//   useEffect(() => {
-//     setUserInfo(getLoginUserInfo());
-//   }, []);
+
+    // 로그인 상태 변화를 감지하는 useEffect를 추가
+    useEffect(() => {
+        setIsLoggedIn(isLogin());
+    }, [isLogin()]);
+
+    useEffect(() => {
+
+        isLoggedIn &&
+        (async() => {
+            const res = await fetch(profileRequestURL, {
+                method: 'GET',
+                headers: { 'Authorization': 'Bearer ' + getLoginUserInfo().token }
+            });
+
+            if (res.status === 200) {
+                const imgUrl = await res.text();
+                setProfileUrl(imgUrl);
+                /*
+                // 서버에서 직렬화된 이미지가 응답된다.
+                const profileBlob = await res.blob();
+                // 해당 이미지를 imgUrl로 변경
+                const imgUrl = window.URL.createObjectURL(profileBlob);
+                setProfileUrl(imgUrl);
+                 */
+            } else {
+                const err = await res.text();
+                setProfileUrl(null);
+            }
+        })();
+
+    }, [isLoggedIn]);
 
     return (
         <AppBar position="fixed" style={{
@@ -57,6 +93,19 @@ const Header = () => {
                                 }
                                 의 할일
                             </Typography>
+                            <img
+                                src={profileUrl ? profileUrl : require('../../assets/img/anonymous.jpeg')}
+                                // src={profileUrl ? profileUrl : require('../../assets/img/anonymous.jpg')}
+                                alt='프사프사'
+                                style={
+                                    {
+                                        marginLeft: 20,
+                                        width: 30,
+                                        height: 30,
+                                        borderRadius: '50%'
+                                    }
+                                }
+                            />
                         </div>
                     </Grid>
 

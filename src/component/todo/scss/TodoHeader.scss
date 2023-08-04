@@ -2,24 +2,24 @@
 // 변수 사용
 $my-dark-gray: #343a40;
 
-header {
-    padding: 48px 32px 24px;
+.todo-header {
+    padding: 20px 32px;
     border-bottom: 1px solid #bbb;
 
     h1 {
-        font-size: 36px;
+        font-size: 25px;
         color: $my-dark-gray;
     }
 
     .day {
         margin-top: 4px;
         color: #868e96;
-        font-size: 21px;
+        font-size: 17px;
     }
     .tasks-left {
         color: #20c997;
         font-size: 18px;
-        margin-top: 40px;
+        margin-top: 20px;
         font-weight: 700;
     }
 
@@ -29,10 +29,10 @@ header {
         align-items: center;
         position: absolute;
         right: 20px;
-        top: 50px;
-        width: 150px;
+        top: 20px;
+        width: 100px;
         height: 40px;
-        font-size: 1.2em;
+        font-size: 15px;
         font-weight: 700;
         &.bg-warning {
             cursor: pointer;

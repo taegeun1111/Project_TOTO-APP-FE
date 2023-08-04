@@ -35,7 +35,7 @@ const TodoHeader = ({count, promote}) => {
     };
 
     return (
-        <header>
+        <header className={'todo-header'}>
             <h1>{dateString}</h1>
             <div className='day'>{dayName}</div>
             <div className='tasks-left'>할 일 {count()}개 남음</div>

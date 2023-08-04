@@ -35,29 +35,11 @@ const TodoTemplate = () => {
     // todos배열을 상태관리
     const [todos, setTodos] = useState([]);
 
-    // id값 시퀀스 생성 함수
-    // const makeNewId = () => {
-    //   if (todos.length === 0) return 1;
-    //   return todos[todos.length - 1].id + 1;
-    // }
-
-    // TodoInput에게 todoText를 받아오는 함수
     const addTodo = todoText => {
-        // console.log('할일 정보 in TodoTemplate: ', todoText);
 
         const newTodo = {
             title: todoText
         };
-
-        // todos.push(newTodo);
-
-        // 리액트의 상태변수는 무조건 setter를 통해서만
-        // 상태값을 변경해야 렌더링에 적용된다.
-        // 다만 상태변수가 불변성(immutable)을 가지기 때문에
-        // 기존의 상태에서 변경이 불가능하고
-        // 새로운 상태를 만들어서 변경해야 한다.
-        // const copyTodos = todos.slice();
-        // copyTodos.push(newTodo);
 
         fetch(API_BASE_URL, {
             method: 'POST',
@@ -67,7 +49,7 @@ const TodoTemplate = () => {
             .then(res => {
                 if(res.status === 200) return res.json();
                 else if (res.status === 401) {
-                    alert('일반회원은 일정 등록이 5개로 제한됩니다 ㅠㅠ');
+                    alert('일반회원은 일정 등록이 5개로 제한됩니다.');
                 }
             })
             .then(json => {
@@ -89,6 +71,7 @@ const TodoTemplate = () => {
             .then(json => {
                 setTodos(json.todos);
             });
+        alert('삭제가 완료되었습니다.')
     };
 
     // 할 일 체크 처리 함수
@@ -104,18 +87,6 @@ const TodoTemplate = () => {
         })
             .then(res => res.json())
             .then(json => setTodos(json.todos));
-
-        // console.log(`체크한 Todo id: ${id}`);
-
-        // const copyTodos = [...todos];
-        // for (const cTodo of copyTodos) {
-        //   if (cTodo.id === id) {
-        //     cTodo.done = !cTodo.done;
-        //   }
-        // }
-        // setTodos(copyTodos);
-
-        // setTodos(todos.map(todo => todo.id === id ? {...todo, done: !todo.done} : todo));
 
     };
 

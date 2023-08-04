@@ -16,13 +16,13 @@
     - 이메일과 비밀번호는 정규식을 통해 형식이 유효한지 확인되며, 유효하지 않을 경우 가입이 거부됩니다.
     - 프로필 이미지를 등록하지 않을 경우 기본 이미지로 설정되며, 사용자가 원하는 이미지를 업로드할 수 있습니다. 이미지는 AWS S3에 안전하게 저장됩니다.
     - 이메일 중복 검사를 통해 동일한 이메일로 가입된 계정이 있는지 확인하고, 중복된 경우 회원가입이 불가능합니다.
-      ![Screen Shot 2023-08-04 at 4.58.29 PM.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F94%2F60kh58jd5ns27x18_swldybm0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_V9q7x0%2FScreen%20Shot%202023-08-04%20at%204.58.29%20PM.png)
-
+      <img width="409" alt="Screen Shot 2023-08-04 at 5 02 17 PM" src="https://github.com/taegeun1111/Project_TOTO-APP-FE/assets/122959190/10e7b020-e932-41be-8cc7-528022ff4ad6">
 
 - **2. 로그인**
     - 서비스 이용을 위해서는 로그인이 필수적입니다. 로그인하지 않은 사용자는 로그인 페이지로 이동됩니다.
     - 로그인 시 사용자 정보는 Local Storage에 저장되어 편리하게 이용할 수 있습니다.
-      ![2 (1).png](..%2F2%20%281%29.png)
+      ![2 (1)](https://github.com/taegeun1111/Project_TOTO-APP-FE/assets/122959190/d581eb5d-8418-4d0f-b78e-7fa07d592f8d)
+
 
 
 - **3. Todo**
@@ -30,15 +30,17 @@
     - 할 일을 입력할 때는 2~20글자 사이만 입력이 가능하도록 제한되며, 이를 프론트엔드와 백엔드 양쪽에서 검증합니다.
     - 완료된 일정은 좌측 동그라미 버튼을 클릭하여 표시할 수 있으며, '할 일 x개 남음' 메시지를 통해 완료된 일정 수를 확인할 수 있습니다. `(좌측 이미지)`
     - 해당 일정에 마우스 hover시 삭제를 할 수 있는 버튼을 통해 삭제가 가능합니다. `(우측 이미지)`
-      ![Screen_Shot_2023-08-04_at_4.10.39_PM.png](..%2FScreen_Shot_2023-08-04_at_4.10.39_PM.png)
+<img width="1000" alt="Screen_Shot_2023-08-04_at_4 10 39_PM" src="https://github.com/taegeun1111/Project_TOTO-APP-FE/assets/122959190/e8d497a2-e73c-4831-b7ad-aa02eda0f328">
 
 
 - **4. 등급제한**
     - 일반 회원이 사용할 수 있는 게시물의 개수는 5개로 제한되며 프리미엄으로 등급을 상향할 시 게시물의 제한이 없어집니다.
         - 일반회원의 경우
-          ![tr2.png](..%2Ftr2.png)
+          ![tr2](https://github.com/taegeun1111/Project_TOTO-APP-FE/assets/122959190/cfd0ab6a-46f4-4111-b1b3-3acfb63d98a4)
+
     
         - 프리미엄 회원의 경우
-          ![123.png](..%2F123.png)
+          ![123](https://github.com/taegeun1111/Project_TOTO-APP-FE/assets/122959190/ad9d3cc2-1544-4fc5-9fd7-ca289214487e)
+
 
         
